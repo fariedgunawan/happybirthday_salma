@@ -32,7 +32,7 @@ const Login = () => {
         <div className="w-full mb-4">
           <input
             type="password" // Ubah ke type password untuk menyembunyikan input
-            placeholder="Masukkan password kamu"
+            placeholder="Masukkan dd/mm/yy lahir kamu"
             value={password}
             onChange={(e) => setPassword(e.target.value)} // Update state saat input berubah
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
