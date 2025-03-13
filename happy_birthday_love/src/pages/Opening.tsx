@@ -7,11 +7,11 @@ const Opening = () => {
   // Daftar teks yang akan ditampilkan
   const messages = [
     "Hai alma ......",
-    "hari ini hari yang special buat kesayangan ku",
+    "hari ini hari yang spesial buat kesayangan ku",
     "hari ini juga hari yang pastinya dinanti2kan sama kamu kan",
     "aku ada sesuatu yang aku udah usahain ini dari sejak lama",
     "aku mau ngucapin",
-    "selamat ulang tahun sayang ..",
+    "barakallah fi umrik sayang ..",
     "semoga kamu menjadi anak yang solehah",
     "rejekinya lancar",
     "semua urusannya dimudahkan",
@@ -20,7 +20,7 @@ const Opening = () => {
     "kamu selalu menjadi yang terbaik buat mamah dan papah",
     "kamu juga selalu menjadi yang terbaik buat aku",
     "mungkin ini ga bagus bagus amat buat sekelas kado ke pacar",
-    "tapi seengganya ini special hanya untuk kamu sayang",
+    "tapi seengganya ini spesial hanya untuk kamu sayang",
     "kado aku mungkin ga mahal tpi aku lebih memilih untuk memberikan tenaga dan pikiran aku supaya lebih terkesan buat kamu",
     "jangan merasa sedih lagi sayang",
     "ada faried disini yang selalu berusaha nemenin kamu disaat kamu badmood maupun seneng",
@@ -58,18 +58,19 @@ const Opening = () => {
   }, [currentMessageIndex, messages.length]);
 
   return (
-    <div className="body-opening flex min-h-screen px-[20px] bg-gradient-to-b from-pink-100 to-purple-100">
+    <div className="body-opening flex items-center justify-center min-h-screen px-[20px] bg-gradient-to-b from-pink-100 to-purple-100">
       <div className="container flex flex-col items-center justify-center">
-        <h2 className={`font-semibold text-[20px] text-center ${isVisible ? "fade-in-slide-up-text" : "opacity-0"}`}>{messages[currentMessageIndex]}</h2>
+        <h2 className={`font-semibold text-[20px] text-center md:text-[25px] ${isVisible ? "fade-in-slide-up-text" : "opacity-0"}`}>{messages[currentMessageIndex]}</h2>
         {showButton && (
           <button
-            className="mt-4 px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors"
+            className="mt-4 px-6 py-2 bg-pink-500 md:text-[20px] text-white rounded-lg hover:bg-pink-600 transition-colors"
             onClick={() => navigate("/alma")} // Aksi saat button diklik
           >
             I have something for you
           </button>
         )}
       </div>
+      
     </div>
   );
 };

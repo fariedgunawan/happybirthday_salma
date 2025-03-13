@@ -1,7 +1,8 @@
 import "./Cake.css";
-const Cake = () => {
+
+const Cake2 = () => {
   return (
-    <div className="body-cake min-h-screen bg-red-300">
+    <div className="body-of-cake min-h-screen flex justify-center bg-black">
       <div className="container flex flex-col">
         <div className="velas">
           <div className="fuego"></div>
@@ -232,11 +233,11 @@ const Cake = () => {
         </svg>
 
         <div className="text text-white">
-          <h2 className="text-center font-semibold text-[20px]">happy birthday alma</h2>
+          <h2 className="text-center font-semibold text-[20px]">Barakallah Fi Umrik Alma</h2>
         </div>
       </div>
     </div>
   );
 };
 
-export default Cake;
+export default Cake2;
