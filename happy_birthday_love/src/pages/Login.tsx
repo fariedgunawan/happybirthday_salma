@@ -4,9 +4,23 @@ import "./Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [password, setPassword] = useState(""); // State untuk menyimpan input password
+  const [otp, setOtp] = useState(Array(6).fill("")); // State untuk menyimpan input OTP
   const [error, setError] = useState(""); // State untuk menyimpan pesan error
   const [isLoading, setIsLoading] = useState(false); // State untuk mengontrol loading
+
+  const handleOtpChange = (index: number, value: string) => {
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
+
+    // Auto-focus ke input berikutnya jika ada input
+    if (value && index < 5) {
+      const nextInput = document.getElementById(`otp-input-${index + 1}`);
+      if (nextInput) {
+        nextInput.focus();
+      }
+    }
+  };
 
   const handleLogin = () => {
     setIsLoading(true); // Aktifkan loading
@@ -14,29 +28,35 @@ const Login = () => {
 
     // Simulasi proses validasi dengan setTimeout
     setTimeout(() => {
-      if (password === "160304") {
-        // Jika password benar, navigasi ke /read
+      const enteredOtp = otp.join("");
+      if (enteredOtp === "160304") {
+        // Jika OTP benar, navigasi ke /read
         navigate("/read");
       } else {
-        // Jika password salah, tampilkan pesan error
-        setError("Password salah! Coba lagi.");
+        // Jika OTP salah, tampilkan pesan error
+        setError("Tanggal Lahir Kamu Salah !");
       }
       setIsLoading(false); // Matikan loading setelah validasi selesai
-    }, 5000); // Delay 2 detik untuk simulasi loading
+    }, 2000); // Delay 2 detik untuk simulasi loading
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-pink-100 to-purple-100 p-4">
       <div className="content flex flex-col items-center bg-white rounded-lg shadow-2xl p-6 w-full max-w-md relative">
-        <h1 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 text-center">Halo Sayang !!</h1>
-        <div className="w-full mb-4">
-          <input
-            type="password" // Ubah ke type password untuk menyembunyikan input
-            placeholder="Masukkan dd/mm/yy lahir kamu"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)} // Update state saat input berubah
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
-          />
+        <h1 className="text-2xl md:text-3xl font-bold mb-2 text-gray-800 text-center">Halo Sayang !!</h1>
+        <h2 className="mb-3 text-slate-500">Masukan dd/mm/yy Lahir Kamu</h2>
+        <div className="w-full mb-4 flex justify-between">
+          {otp.map((digit, index) => (
+            <input
+              key={index}
+              id={`otp-input-${index}`}
+              type="text"
+              maxLength={1}
+              value={digit}
+              onChange={(e) => handleOtpChange(index, e.target.value)}
+              className="w-12 h-12 text-center border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
+            />
+          ))}
         </div>
 
         {error && ( // Tampilkan pesan error jika ada
@@ -52,10 +72,7 @@ const Login = () => {
         </button>
 
         <p className="mt-4 text-gray-600 text-sm md:text-base text-center">
-          Masa iya gatau?{" "}
-          <a href="#" className="text-blue-600 hover:underline">
-            Lahir Kembali
-          </a>
+          Nyalain Dulu Lagunya
         </p>
 
         {/* Overlay dan Loading */}
