@@ -50,7 +50,7 @@ const Login = () => {
             <input
               key={index}
               id={`otp-input-${index}`}
-              type="text"
+              type="number"
               maxLength={1}
               value={digit}
               onChange={(e) => handleOtpChange(index, e.target.value)}
